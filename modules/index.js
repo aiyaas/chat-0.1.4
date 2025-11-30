@@ -272,7 +272,7 @@ setInterval(async () => {
             </tr>
             <tr>
               <th> Api Key&emsp;</th>
-              <td><pre class="m-0">${(typeof e.target.result === "string") ? `${e.target.result[0].value.slice(0, 30)}...` : "..."}</pre></td>
+              <td><pre class="m-0">${e.target.result[0].value.slice(0, 30)}...</pre></td>
             </tr>
           </table>`;
     };
