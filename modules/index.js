@@ -268,7 +268,7 @@ setInterval(async () => {
             </tr>
             <tr>
               <th> Data stack&emsp;</th>
-              <td><pre class="m-0">${(typeof data === "string") ? `${data.slice(0, 20)}...` : "..."}</pre></td>
+              <td><pre class="m-0">${(typeof data === "string") ? `${data.slice(0, 20)}...` : ""}</pre></td>
             </tr>
             <tr>
               <th> Api Key&emsp;</th>
