@@ -301,4 +301,6 @@ deleteChat.addEventListener("click", async () => {
     }
 });
 
+bubble("<b style='font-size:15px;'>Welcome to <span style='color:#2aa198;'>REAPL</span>, your personal AI assistant.</b> <br><br> All your inputs such as chats with (Reapl) are not used for any specific purposes so you don't need to worry about your data, all chat data is stored in browser cookies.", 8000);
+
 sendBtn.addEventListener("click", HandleOutgoingChat);
