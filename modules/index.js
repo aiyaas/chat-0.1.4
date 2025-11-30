@@ -131,7 +131,7 @@ function cancelUpFile() {
 
 // Get api key from user
 useKey.addEventListener('click', async () => {
-    const used = prompt("Enter your Api key to use the model!\nhttps://aistudio.google.com/");
+    const used = prompt("Enter your Api key to use in the https://aistudio.google.com/ your key is private.");
     if (used) {
         await addDataToDB('apiKey', used);
     }
@@ -268,11 +268,11 @@ setInterval(async () => {
             </tr>
             <tr>
               <th> Data stack&emsp;</th>
-              <td><pre class="m-0">${(typeof data === "string") ? `${data.slice(0, 20)}...` : ""}</pre></td>
+              <td><pre class="m-0">${(typeof data === "string") ? `${data.slice(0, 20)}...` : "..."}</pre></td>
             </tr>
             <tr>
               <th> Api Key&emsp;</th>
-              <td><pre class="m-0">${e.target.result[0].value}</pre></td>
+              <td><pre class="m-0">${(typeof e.target.result === "string") ? `${e.target.result[0].value.slice(0, 30)}...` : "..."}</pre></td>
             </tr>
           </table>`;
     };
