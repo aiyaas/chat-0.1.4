@@ -53,7 +53,7 @@ async function environment(msg) {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'X-goog-api-key': 'AIzaSyCAwVz1pF43-8pLvPzJysh2NfM4-2YQ6oo'
+            'X-goog-api-key': 'AIzaSyBAOTFibIJdrjPf6vlev6sqfRiJ-okG-hU'
           },
           body: JSON.stringify({
             'system_instruction': {
