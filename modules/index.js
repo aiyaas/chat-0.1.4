@@ -223,7 +223,6 @@ uploaded.addEventListener("click", () => {
             }
             
             function renderPreview() {
-                console.log(file.type)
                 return showMediaFile.innerHTML = `
                   <div class="container">
                     <button class="button" onclick="cancelUpFile()">
@@ -261,7 +260,6 @@ setInterval(async () => {
     const store = transaction.objectStore(OBJECT_STORE_NAME);
     store.getAll().onsuccess = (e) => {
         const data = JSON.stringify(e.target.result);
-        console.log(data)
         document.querySelector("#statistic").innerHTML = `
           <table>
             <tr>
