@@ -17,7 +17,7 @@ async function environment(msg) {
     if (youtubeRegex.test(msg)) {
       const ytAuth = await (await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${msg}&key=AIzaSyCRzpbNMkmCOcVy1VCiHjiNzdqYnWvN2ec`)).json();
       
-      return `<iframe src="https://www.youtube.com/embed/${ytAuth.items[0].id.videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br /><span>${ytAuth.items[0].snippet.description}</span>`;
+      return `<iframe src="https://www.youtube.com/embed/${ytAuth.items[0].id.videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br /><small>${ytAuth.items[0].snippet.description}</small>`;
     } else {
       // Send the chat history to the API to get a response
       const request = await (await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
