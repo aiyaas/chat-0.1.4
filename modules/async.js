@@ -1,54 +1,25 @@
 async function environment(msg) {
-  // Simpan riwayat pesan dan data file
-  data.message = msg; 
+  data.message = msg; // Save history and file data
   
-  // Push data ke chat session, untuk riwayat percakapan sebelumnya
+  // Push data to chat session, for previous conversation history
   data.history.push({
     role: 'user',
     parts: [
       { text: data.message },
-      // Tambahkan inline_data jika ada data file
       ...(data.file?.data ? [{ inline_data: (({ fileName, isImage, ...rest }) => rest)(data.file) }] : [])
     ]
   });
   
   try {
-    const model = "gemini-2.5-flash";
+    const model = "gemini-2.5-flash"; // Set model
     const youtubeRegex = /\b(yt|youtube)\b/i;
     
-    // Check if the user requested a video search      
     if (youtubeRegex.test(msg)) {
-      // Jika terdeteksi kata kunci YouTube
       const ytAuth = await (await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${msg}&key=AIzaSyCRzpbNMkmCOcVy1VCiHjiNzdqYnWvN2ec`)).json();
       
-      // Kembalikan iframe YouTube dan deskripsi
-      const videoId = ytAuth.items?.[0]?.id?.videoId;
-      const description = ytAuth.items?.[0]?.snippet?.description;
-      
-      if (videoId) {
-        // Jika video ditemukan
-        const response = `<iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br /><small>${description || 'Tidak ada deskripsi.'}</small>`;
-        
-        // Simpan respons model ke riwayat
-        data.history.push({
-          role: 'model',
-          parts: [{ text: response }]
-        });
-        return response;
-      } else {
-        // Jika video tidak ditemukan, beri respons ke user
-        const notFoundResponse = "Maaf, tidak dapat menemukan video YouTube yang relevan dengan permintaan Anda.";
-        
-        // Simpan respons model ke riwayat
-        data.history.push({
-          role: 'model',
-          parts: [{ text: notFoundResponse }]
-        });
-        return useMarkUpText(notFoundResponse);
-      }
-      
+      return `<iframe src="https://www.youtube.com/embed/${ytAuth.items[0].id.videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br /><span>${ytAuth.items[0].snippet.description}</span>`;
     } else {
-      // Jika bukan pencarian YouTube, kirim ke API Chat
+      // Send the chat history to the API to get a response
       const request = await (await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
           method: 'POST',
           headers: {
@@ -65,23 +36,22 @@ async function environment(msg) {
           }),
           signal: new AbortController().signal
         }))
-        .json(); // Ambil data dengan tipe objek
+        .json(); // Get data with object type
       
-      const response = request ? request?.candidates?.[0]?.content?.parts?.[0]?.text.replace(/<(.*?)>/gis, '&#60;$1&#62;') : request?.error?.message; // Proses teks respons
+      const response = request ? request?.candidates?.[0]?.content?.parts?.[0]?.text.replace(/<(.*?)>/gis, '&#60;$1&#62;') : request?.error?.message; // Process the response text and display
       
-      // Tambahkan data dengan role (model) type 
-      data.history.push({
-        role: 'model',
-        parts: [{ text: response }]
-      });
-
       return useMarkUpText(response);
     }
     
+    // Add data with role (model) type 
+    data.history.push({
+      role: 'model',
+      parts: [{ text: response }]
+    });
   } catch (e) {
     console.error(e.stack);
-    return `Terjadi kesalahan: ${e.message}`;
+    return e.message;
   } finally {
-    data.file = {}; // Reset data file setelah respons dari model 
+    data.file = {}; // Reset data file after response from model 
   }
 }
