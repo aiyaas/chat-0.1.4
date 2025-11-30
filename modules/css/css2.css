@@ -1,0 +1,64 @@
+@font-face {
+  font-family: 'Fantasque Sans';
+  src: url('./../font/FantasqueSansMNerdFont-Regular.ttf');
+}
+
+mark,
+pre,
+code,
+.mark-a,
+.mark-b {
+  font-family: 'Fantasque Sans';
+  background: transparent;
+}
+
+.mark-a {
+  background-image: linear-gradient(#eef3fa, #eef3fa
+    /* #dfecff, #dfecff */
+  );
+  background-repeat: no-repeat;
+  color: #4a5568
+    /* #4a5568 #2aa198 */
+  ;
+  border-radius: 3px;
+  line-height: 1.4em;
+  padding: 1px 0.4em;
+  vertical-align: middle;
+  margin: 0em 0.2em;
+}
+
+.mark-a {
+  animation: highlights 2s forwards;
+}
+
+.mark-b {
+  background-image: linear-gradient(#f6f7fa, #f6f7fa);
+  background-repeat: no-repeat;
+  color: #4a5568;
+  border-radius: 3px;
+  line-height: 1.4em;
+  padding: 1px 0.2em;
+  vertical-align: middle;
+  margin: 0em 0.2em;
+}
+
+.mark-b {
+  animation: highlights 2s forwards;
+}
+
+@keyframes highlights {
+  from {
+    background-size: 0%;
+  }
+  
+  to {
+    background-size: 100%;
+  }
+}
+
+/* Change the length of a text to dots when the length exceeds the padding limit */
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
