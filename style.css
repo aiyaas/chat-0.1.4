@@ -110,7 +110,7 @@ video {
     font: inherit;
     vertical-align: baseline;
     
-    /* user-select: none; */ /* No copying the text */
+    user-select: none; /* No copying the text */
     font-variant-numeric: tabular-nums;
 }
 
