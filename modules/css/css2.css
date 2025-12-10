@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'Fantasque Sans';
-  src: url('./../font/FantasqueSansMNerdFont-Regular.ttf');
+  font-family: 'Google Sans Code';
+  src: url('./../font/GoogleSansCode-Regular.ttf');
 }
 
 mark,
@@ -8,7 +8,7 @@ pre,
 code,
 .mark-a,
 .mark-b {
-  font-family: 'Fantasque Sans';
+  font-family: 'Google Sans Code';
   background: transparent;
 }
 
