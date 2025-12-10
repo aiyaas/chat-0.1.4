@@ -14,8 +14,8 @@ Reset CSS
 }
 
 @font-face {
-    font-family: 'Fantasque Sans';
-    src: url('./modules/font/FantasqueSansMNerdFont-Regular.ttf');
+    font-family: 'Google Sans Code';
+    src: url('./modules/font/GoogleSansCode-Regular.ttf');
 }
 
 /* Symbols icon by nerd font https://www.nerdfonts.com/ */
@@ -195,7 +195,7 @@ code,
 span,
 mark {
     /* Default custom font for inline code */
-    font-family: 'Fantasque Sans';
+    font-family: 'Materials', 'Google Sans Code';
 }
 
 /********************************
