@@ -6,8 +6,8 @@ https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javasc
  * @author Lea Verou
  */
 @font-face {
-  font-family: 'Fantasque Sans';
-  src: url('./../font/JetBrainsMonoNerdFont-Regular.ttf');
+  font-family: 'Google Sans Code';
+  src: url('./../font/GoogleSansCode-Regular.ttf');
 }
 
 code[class*="language-"],
@@ -15,7 +15,7 @@ pre[class*="language-"] {
 	color: #000;
 	background: none;
 	text-shadow: 1px white;
-	font-family: 'Fantasque Sans' /* Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace */;
+	font-family: 'Google Sans Code' /* Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace */;
 	font-size: 13px /* 1em */;
 	text-align: left;
 	font-weight: 500;
