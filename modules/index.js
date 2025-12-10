@@ -272,7 +272,7 @@ setInterval(async () => {
             </tr>
             <tr>
               <th> Api Key&emsp;</th>
-              <td><pre class="m-0">${e.target.result[0].value.slice(0, 30) || null}</pre></td>
+              <td><pre class="m-0">${e.target.result[0].value.replace(/.(?=.{4})/g, '*')}</pre></td>
             </tr>
           </table>`;
     };
