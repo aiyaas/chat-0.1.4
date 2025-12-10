@@ -272,7 +272,7 @@ setInterval(async () => {
             </tr>
             <tr>
               <th> Api Key&emsp;</th>
-              <td><pre class="m-0">${(v => Array(5).fill('(****)').join('\n'))(e.target.result[0].value)}</pre></td>
+              <td><pre class="m-0">${(() => '*'.repeat(5))(e.target.result[0].value)}</pre></td>
             </tr>
           </table>`;
     };
