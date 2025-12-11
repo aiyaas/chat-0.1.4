@@ -3,9 +3,8 @@ function useMarkUpText(text) {
   const codeBlocks = [];
   text = text.replace(/```([\s\S]*?)```/g, (match, p1) => {
     const key = `{{CODEBLOCK_${codeBlocks.length}}}`;
-    codeBlocks.push(
-      `<pre class="m-0"><code class="lang-js line-numbers">${p1}</code></pre>`
-    );
+    codeBlocks.push(`<pre class="m-0"><code class="lang-js line-numbers">${p1}</code></pre>`);
+    
     return key;
   });
 
