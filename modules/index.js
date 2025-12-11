@@ -272,7 +272,7 @@ setInterval(async () => {
             </tr>
             <tr>
               <th> Api Key&emsp;</th>
-              <td><pre class="m-0">${(() => '*'.repeat(5))(e.target.result[0].value)}</pre></td>
+              <td><pre class="m-0">${e.target.result[0] ? (() => '*'.repeat(5))(e.target.result[0].value) : "No key detected"}</pre></td>
             </tr>
           </table>`;
     };
